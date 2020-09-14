@@ -8,7 +8,7 @@ const Constraint = Matter.Constraint;
 var tree, ground, stone;
 var boy;
 var mango1, mango2, mango3, mango4, mango5, mango6, mango7, mango8, mango9, mango10;
-var link;
+var chain;
 
 function setup() {
 	createCanvas(1600, 700);
@@ -20,7 +20,7 @@ function setup() {
 	tree = new Tree(1200,360,300,600);
 	ground = new Ground(800,650, 1600,30);
 	stone = new Stone(345,455,40,40);
-	boy = new Boy(400,550,200,400);
+  boy = new Boy(400,550,200,400);
 
 	mango1 = new Mango(1200,230,50);
 	mango2 = new Mango(1300,300,50);
@@ -33,7 +33,7 @@ function setup() {
 	mango9 = new Mango(1160,310,50);
 	mango10 = new Mango(1270,190,50);
 
-	link = new Link(stone.body, {x:350,y:450});
+	chain = new Link(stone.body, {x:350,y:450});
 
 	Engine.run(engine);
   
@@ -61,7 +61,7 @@ function draw() {
   mango9.display();
   mango10.display();
 
-  link.display();
+  chain.display();
 
   detectCollision(stone, mango1);
   detectCollision(stone, mango2);
@@ -86,7 +86,7 @@ function mouseDragged(){
 
 function mouseReleased(){
 
-    link.fly();
+    chain.fly();
 
 }
 
@@ -106,6 +106,6 @@ function detectCollision(lstone, lmango) {
 function keyPressed() {
   if(keyCode === 32) {
     Matter.Body.setPosition(stone.body, {x:350, y:450})
-    launcherObject.attach(stone.body);
+    chain.attach(stone.body);
   }
 }
